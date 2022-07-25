@@ -42,13 +42,14 @@ public class FluxAndMonoGeneratorService {
                 .flatMap(s -> getChars(s));
     }
 
-    private Function<Flux<String>,Flux<String>> function2 = string -> string.map(String::toUpperCase).filter(s -> s.length() > 10).map(String::toUpperCase);
+    private Function<Flux<String>,Flux<String>> function2 = string -> string.map(String::toUpperCase).filter(s -> s.length() > 10);
+    private Function<Flux<String>,Flux<String>> function3 = string -> string.map(String::toUpperCase).filter(s -> s.length() > 1);
 
     public Flux<String> defaultIfEmptyExample() {
         return Flux.fromIterable(List.of("Joe", "Jennifer", "Alexa"))
                 .transform(function2)  //transform takes a Function object
-                .flatMap(s -> getChars(s))
-                .defaultIfEmpty("default").transform(function2);
+                .defaultIfEmpty("default").transform(function3)
+                .flatMap(s -> getChars(s));
     }
 
     public Flux<String> switchIfEmptyExample() {
@@ -56,8 +57,8 @@ public class FluxAndMonoGeneratorService {
 
         return Flux.fromIterable(List.of("Joe", "Jennifer", "Alexa"))
                 .transform(function2)  //transform takes a Function object
-                .flatMap(s -> getChars(s))
-                .switchIfEmpty(defaultFlux).transform(function);
+                .switchIfEmpty(defaultFlux).transform(function3)
+                .flatMap(s -> getChars(s));
     }
 
     public Flux<String> charsOfNames(int stringLength) {
