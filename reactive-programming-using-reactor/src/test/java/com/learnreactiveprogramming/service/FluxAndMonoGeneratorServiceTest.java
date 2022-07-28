@@ -1,6 +1,7 @@
 package com.learnreactiveprogramming.service;
 
 import org.junit.jupiter.api.Test;
+import reactor.core.publisher.Flux;
 import reactor.test.StepVerifier;
 
 import java.util.List;
@@ -137,5 +138,89 @@ class FluxAndMonoGeneratorServiceTest {
                 .verifyComplete();
     }
 
+    @Test
+    void testConcatFluxStreams() {
+        var combinedStreams = fluxAndMonoGeneratorService.concatFluxStreams();
+
+        StepVerifier.create(combinedStreams)
+                .expectNext("Joe", "Jennifer", "Alexa", "Wyatt", "Kyle", "Sadie", "No More", "End of Line")
+                .verifyComplete();
+    }
+
+    @Test
+    void testConcatFluxAndMono() {
+        var combinedStreams = fluxAndMonoGeneratorService.concatFluxAndMono();
+        StepVerifier.create(combinedStreams)
+                .expectNext("Joe", "Jennifer", "Alexa", "Wyatt", "Kyle", "Sadie", "Zeus")
+                .verifyComplete();
+    }
+
+    @Test
+    void testConcatFluxAndMono2() {
+        var combinedStreams = fluxAndMonoGeneratorService.concatFluxAndMono2();
+        StepVerifier.create(combinedStreams)
+                .expectNext("Zeus", "Joe", "Jennifer", "Alexa", "Wyatt", "Kyle", "Sadie")
+                .verifyComplete();
+    }
+
+    @Test
+    void testMergeExample() {
+        var merged = fluxAndMonoGeneratorService.mergeExample();
+        StepVerifier.create(merged)
+                .expectNextCount(9)
+                .verifyComplete();
+    }
+    @Test
+    void testMergeExample2() {
+        var merged = fluxAndMonoGeneratorService.mergeExample2();
+        StepVerifier.create(merged)
+                .expectNext("A", "D", "B", "E", "C", "F")
+                .verifyComplete();
+    }
+
+    @Test
+    void testMergeWithExample() {
+        var merged = fluxAndMonoGeneratorService.mergeWithExample();
+        StepVerifier.create(merged)
+                .expectNext("D", "E", "F", "A", "B", "C")
+                .verifyComplete();
+    }
+    @Test
+    void testMergeSequentialExample() {
+        var merged = fluxAndMonoGeneratorService.mergeSequentialExample();
+        StepVerifier.create(merged)
+                .expectNext("D", "E", "F", "A", "B", "C", "G", "H", "I")
+                .verifyComplete();
+    }
+    @Test
+    void testZipExample() {
+        var merged = fluxAndMonoGeneratorService.zipExample();
+        StepVerifier.create(merged)
+                .expectNext("DG", "EH", "FI")
+                .verifyComplete();
+    }
+    @Test
+    void testZipExampleWtuple() {
+        var merged = fluxAndMonoGeneratorService.zipExampleWtuple();
+        StepVerifier.create(merged)
+                .expectNext("DG14", "EH25", "FI36")
+                .verifyComplete();
+    }
+
+    @Test
+    void testZipWithExample() {
+        var merged = fluxAndMonoGeneratorService.zipWithExample();
+        StepVerifier.create(merged)
+                .expectNext("DG", "EH", "FI")
+                .verifyComplete();
+    }
+
+    @Test
+    void testZipWithMonoExample() {
+        var merged = fluxAndMonoGeneratorService.zipWithMonoExample();
+        StepVerifier.create(merged)
+                .expectNext("Zeus~~~")
+                .verifyComplete();
+    }
 
 }
