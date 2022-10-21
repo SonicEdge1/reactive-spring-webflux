@@ -26,4 +26,25 @@ public class MovieInfoService {
     public Mono<MovieInfo> getMovieInfoById(String id) {
         return movieInfoRepository.findById(id);
     }
+
+    public Flux<MovieInfo> getMovieInfoByYear(Integer year) {
+        return movieInfoRepository.findByYear(year);
+    }
+    public Flux<MovieInfo> getMovieInfoByTitle(String title) {
+        return movieInfoRepository.findByTitle(title);
+    }
+
+    public Mono<Void> deleteMovieInfoById(String id) {
+        return movieInfoRepository.deleteById(id);
+    }
+
+    public Mono<MovieInfo> updateMovieInfoById(String id, MovieInfo updatedMovieInfo) {
+        return movieInfoRepository.findById(id).flatMap( movieInfo -> {
+            movieInfo.setTitle(updatedMovieInfo.getTitle());
+            movieInfo.setYear(updatedMovieInfo.getYear());
+            movieInfo.setCast(updatedMovieInfo.getCast());
+            movieInfo.setRelease_date(updatedMovieInfo.getRelease_date());
+            return movieInfoRepository.save(movieInfo);
+        });
+    }
 }

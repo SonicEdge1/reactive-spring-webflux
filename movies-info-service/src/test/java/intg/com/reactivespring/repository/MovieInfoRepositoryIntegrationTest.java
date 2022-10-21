@@ -60,7 +60,7 @@ class MovieInfoRepositoryIntegrationTest {
 
         StepVerifier.create(moviesInfoMono)
                 .assertNext(movieInfo -> {
-                    assertEquals(movieInfo.getName(), "Dark Knight Rises");
+                    assertEquals(movieInfo.getTitle(), "Dark Knight Rises");
                 })
                  .verifyComplete();
     }
@@ -74,7 +74,7 @@ class MovieInfoRepositoryIntegrationTest {
         StepVerifier.create(moviesInfoMono)
                 .assertNext(movieInfo -> {
                     assertNotNull(movieInfo.getMovieInfoId());
-                    assertEquals("Time Bandits", movieInfo.getName());
+                    assertEquals("Time Bandits", movieInfo.getTitle());
                 })
                 .verifyComplete();
     }
@@ -95,13 +95,24 @@ class MovieInfoRepositoryIntegrationTest {
 
     @Test
     void deleteMovieTest() {
+        var allMovies1 = movieInfoRepository.findAll().log();
+        StepVerifier.create(allMovies1).expectNextCount(4).verifyComplete();
         var movieToDelete = movieInfoRepository.findById("abc").block();
-//      movieInfoRepository.deleteById("abc");  //shortcut
+        System.out.println("DELETING: " + movieToDelete);
         movieInfoRepository.delete(movieToDelete).block();
-        var allMovies = movieInfoRepository.findAll();
+        var allMovies = movieInfoRepository.findAll().log();
 
         StepVerifier.create(allMovies)
-                .expectNextCount(3);
+                .expectNextCount(3).verifyComplete();
+    }
+
+    @Test
+    void deleteMovieTest2() {
+        movieInfoRepository.deleteById("abc").block();  //shortcut
+        var allMovies = movieInfoRepository.findAll().log();
+
+        StepVerifier.create(allMovies)
+                .expectNextCount(3).verifyComplete();
     }
 
     @Test
@@ -113,7 +124,7 @@ class MovieInfoRepositoryIntegrationTest {
         var myMovie = movieInfoRepository.findOne(Example.of(exampleMovie)).log();
         StepVerifier.create(myMovie)
                 .assertNext(movieInfo -> {
-                    assertEquals("The Dark Knight", movieInfo.getName());
+                    assertEquals("The Dark Knight", movieInfo.getTitle());
                 }).verifyComplete();
     }
 

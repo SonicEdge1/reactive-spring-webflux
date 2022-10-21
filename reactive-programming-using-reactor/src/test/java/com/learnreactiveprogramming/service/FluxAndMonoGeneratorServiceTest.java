@@ -70,7 +70,7 @@ class FluxAndMonoGeneratorServiceTest {
                 .verifyComplete();
     }
 
-    @Test
+    @org.testng.annotations.Test
     void testTransformExample() {
         var fluxNames = fluxAndMonoGeneratorService.transformExample(5);
 
@@ -81,10 +81,10 @@ class FluxAndMonoGeneratorServiceTest {
 
     @Test
     void testNamesMono_map_filter() {
-        var monoNames = fluxAndMonoGeneratorService.namesMono_map_filter(4);
+        var monoNames = fluxAndMonoGeneratorService.namesMono_map_filter(5);
 
         StepVerifier.create(monoNames)
-//                .expectNext("ZEUS") //works for stringLength 5 and above
+                .expectNext("ZEUS") //works for stringLength 5 and above
                 .verifyComplete();
     }
 

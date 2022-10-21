@@ -1,3 +1,8 @@
+Current Progress / Slide:
+[digitalu udemy](https://digitalu.udemy.com/course/build-reactive-restful-apis-using-spring-boot-webflux/learn/lecture/28244368#overview)  
+Thread Safety with a singleton Class: [Digital Ocean](https://www.digitalocean.com/community/tutorials/thread-safety-in-java-singleton-classes)
+
+
 # My sandbox copy of
 # reactive-spring-webflux
 Spring Webflux
