@@ -8,6 +8,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor
@@ -17,8 +18,9 @@ public class Review {
 
     @Id
     private String reviewId;
-    private Long movieInfoId;
+    @NotNull(message = "review.movieInfoId : must not be null")
+    private String movieInfoId;
     private String comment;
-    //@Min(value = 0L, message = "rating.negative : please pass a non-negative value")
+    @Min(value = 0L, message = "review.rating.negative : please pass a non-negative value")
     private Double rating;
 }

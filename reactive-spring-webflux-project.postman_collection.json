@@ -1,0 +1,97 @@
+{
+	"info": {
+		"_postman_id": "9646a849-ee2d-4545-9659-90852c192d2a",
+		"name": "reactive-spring-webflux-project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "16918809"
+	},
+	"item": [
+		{
+			"name": "PostMovieInfo",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Weird Science\",\n    \"year\": \"1985\",\n    \"release_date\": \"1985-08-02\",\n    \"cast\": [\"Kelly LeBrock\", \"Anthony Michael Hall\", \"Ilan Mitchell-Smith\"]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/movieInfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movieInfo"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "Weird Science",
+							"disabled": true
+						},
+						{
+							"key": "year",
+							"value": "1985",
+							"disabled": true
+						},
+						{
+							"key": "release_date",
+							"value": "1985-08-02",
+							"disabled": true
+						},
+						{
+							"key": "cast",
+							"value": null,
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "movieinfo",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/v1/movieInfo",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"movieInfo"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	]
+}

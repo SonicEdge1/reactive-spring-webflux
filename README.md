@@ -1,8 +1,10 @@
 Current Progress / Slide:
-[digitalu udemy](https://digitalu.udemy.com/course/build-reactive-restful-apis-using-spring-boot-webflux/learn/lecture/28244368#overview)  
-Thread Safety with a singleton Class: [Digital Ocean](https://www.digitalocean.com/community/tutorials/thread-safety-in-java-singleton-classes)
+[digitalu udemy](https://digitalu.udemy.com/course/build-reactive-restful-apis-using-spring-boot-webflux/learn/lecture/28751434)  
+Thread Safety with a singleton Class: [Digital Ocean](https://www.digitalocean.com/community/tutorials/thread-safety-in-java-singleton-classes)  
+Solution Repository [dilipsundarraj1/reactive-spring-webflux](https://github.com/dilipsundarraj1/reactive-spring-webflux/tree/1b246fd322d34837c47f460aa5ce803add186853)  
 
-
+Starting Services:  My intellij currently has issues starting the reviews and movies clients from the IDE.  
+TO START services, use the command line and navigate to each main service folder and run ./gradlew bootrun
 # My sandbox copy of
 # reactive-spring-webflux
 Spring Webflux
